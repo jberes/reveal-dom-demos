@@ -1,0 +1,194 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.reports-card-view-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow: auto;
+    height: 100%;
+}
+.group {
+    background-color: hsla(var(--ig-gray-100));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    padding: 24px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.row-layout {
+    display: flex;
+}
+.group_1 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+}
+.group_2 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.products {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.card {
+    height: max-content;
+    min-width: 350px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_3 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_4 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_5 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    min-width: 50px;
+}
+.group_6 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.checkbox-group {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    min-width: 50px;
+}
+.group_7 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+}
+.h6 {
+    color: hsla(var(--ig-gray-800));
+    height: max-content;
+    min-width: min-content;
+}
+.image {
+    height: 100%;
+}
+.text {
+    height: max-content;
+    min-width: min-content;
+}
+.image_1 {
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    min-width: 0;
+    min-height: 0;
+    flex-shrink: 0;
+}
+.media-content {
+    height: 250px;
+}
+.actions-content {
+    min-width: 50px;
+    min-height: 40px;
+}
+.icon-button::part(base) {
+    color: hsla(var(--ig-primary-500));
+}
+.textarea {
+    height: max-content;
+    min-width: min-content;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.button_1 {
+    margin: 0 0 8px 8px;
+    height: max-content;
+}
+.input {
+    height: max-content;
+    min-width: min-content;
+}
+.select {
+    height: max-content;
+    min-width: min-content;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.combo {
+    height: max-content;
+    min-width: 120px;
+    max-width: 240px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.button_2 {
+    height: max-content;
+}
+.input_1 {
+    height: max-content;
+    min-width: min-content;
+    max-width: 120px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.checkbox {
+    margin: 0 12px 0 0;
+    width: max-content;
+    height: max-content;
+}
+.button_3::part(base) {
+    color: hsla(var(--ig-surface-500));
+}
+.button_4::part(base) {
+    color: hsla(var(--ig-surface-500));
+}
+.button_5::part(base) {
+    color: hsla(var(--ig-surface-500));
+}

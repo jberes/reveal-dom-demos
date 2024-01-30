@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IgniteUI.Blazor.Trial" Version="23.1.37" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Shared/MainLayout.razor.css" CssScope="master_view-scope" />
+    <None Update="Pages/Home.razor.css" CssScope="home-scope" />
+    <None Update="Pages/ReportsCardView.razor.css" CssScope="reports-card-view-scope" />
+    <None Update="Pages/ReportsComboView.razor.css" CssScope="reports-combo-view-scope" />
+    <None Update="Pages/ReportsViewer.razor.css" CssScope="reports-viewer-scope" />
+    <None Update="Pages/NewReport.razor.css" CssScope="new-report-scope" />
+  </ItemGroup>
+
+</Project>

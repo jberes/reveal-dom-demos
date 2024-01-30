@@ -1,0 +1,28 @@
+﻿@inject IJSRuntime JSRuntime
+
+@*<div id="@DivId" style="height: 90%; width: 90%; position: relative;"></div>
+*@
+<div style="display: flex; justify-content: center; align-items: center; ">
+    <div id="@DivId" style="height: 90%; width: 90%; position: relative;"></div>
+</div>
+
+
+
+@code {
+
+    private static int componentCounter = 0; // Counter for generating unique IDs
+
+    private string DivId { get; set; } = $"thumbnailViewer_{componentCounter++}";
+
+    [Parameter]
+    public IDictionary<string, object> Info { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(100); // need to add a delay to give Blazor time to render the component before calling the JS function to generate the image
+            await JSRuntime.InvokeVoidAsync("createDashboardThumbnail", DivId, Info);
+        }
+    }
+}

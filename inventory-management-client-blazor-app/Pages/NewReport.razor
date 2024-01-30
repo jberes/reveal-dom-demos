@@ -1,0 +1,18 @@
+@page "/new-report"
+@inject IJSRuntime JSRuntime
+
+<div class="row-layout new-report-container">
+    <div id="revealViewNew" style="height: calc(100vh - 30px); width: 100%; position:relative;" class="reveal-dash-board"></div>
+</div>
+
+@code {
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("loadRevealView", "revealViewNew", "");
+        }
+    }
+
+}

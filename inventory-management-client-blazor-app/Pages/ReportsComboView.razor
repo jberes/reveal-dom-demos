@@ -1,0 +1,37 @@
+@page "/reports-combo-view"
+@using RevealServer2
+@using Models.RevealServer2
+@inject IRevealServer2Service revealServer2Service
+@inject IJSRuntime JSRuntime
+
+<div class="column-layout reports-combo-view-container">
+    <div class="column-layout group">
+        <IgbCombo Outlined="true" Data="revealServer2FileData" Change="SelectionChanged" Label="Select Report" ValueKey="Name" DisplayKey="Name" SingleSelect="true" class="single-select-combo" reports-combo-view-scope></IgbCombo>
+    </div>
+    <div class="column-layout group_1">
+        <div id="revealView" style="height: calc(100vh - 30px); width: 100%; position:relative;" class="reveal-dash-board"></div>
+    </div>
+</div>
+
+@code {
+    private Dashboard[] revealServer2FileData = new Dashboard[] { };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("loadRevealView", "revealView", "Inventory");
+        }
+    }
+
+    async void SelectionChanged(IgbComboChangeEventArgs e)
+    {
+        var selected = e.Detail.NewValue[0];
+        await JSRuntime.InvokeVoidAsync("loadRevealView", "revealView", selected);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        revealServer2FileData = await revealServer2Service.GetDashboards(0);
+    }
+}

@@ -1,0 +1,42 @@
+@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<div class="row-layout master-view-container">
+    <div class="column-layout group">
+        <IgbList class="list" master_view-scope>
+            <IgbListItem @onclick="@(e => Navigate(""))">
+                <IgbAvatar Src="assets/Avatar13.png" Size="SizableComponentSize.Medium" slot="start" Shape="AvatarShape.Circle" class="avatar" master_view-scope></IgbAvatar>
+                <div slot="title">Jane Doe</div>
+                <div slot="subtitle">Sales Manager</div>
+                <span slot="end" class="material-icons icon">
+                    keyboard_arrow_down
+                </span>
+            </IgbListItem>
+            <IgbListItem @onclick="@(e => Navigate(""))">
+                <IgbAvatar Src="assets/Store_Icon_Small.svg" slot="start" class="avatar" master_view-scope></IgbAvatar>
+                <div slot="title">Home</div>
+            </IgbListItem>
+            <IgbListItem @onclick="@(e => Navigate("reports-card-view"))">
+                <IgbAvatar Src="assets/Inventory_Icon_Small.svg" slot="start" class="avatar" master_view-scope></IgbAvatar>
+                <div slot="title">Dashboards</div>
+            </IgbListItem>
+            <IgbListItem @onclick="@(e => Navigate("reports-combo-view"))">
+                <IgbAvatar Src="assets/Reports_Icon_Small.svg" slot="start" class="avatar" master_view-scope></IgbAvatar>
+                <div slot="title">Reports</div>
+            </IgbListItem>
+        </IgbList>
+        <div class="column-layout group_1">
+            <img src="assets/InventoryMgmt_Logo.svg" class="image" />
+        </div>
+    </div>
+    <div class="view-container">
+        @Body
+    </div>
+</div>
+
+@code {
+    void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

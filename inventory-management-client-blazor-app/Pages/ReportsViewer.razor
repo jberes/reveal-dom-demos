@@ -1,0 +1,21 @@
+@page "/reports-viewer/{reportName}"
+@inject IJSRuntime JSRuntime
+
+<div class="row-layout reports-viewer-container">
+    <div id="revealView" style="height: calc(100vh - 30px); width: 100%; position:relative;" class="reveal-dash-board"></div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string reportName { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("loadRevealView", "revealView", reportName);
+        }
+    }
+
+}

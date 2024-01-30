@@ -1,0 +1,17 @@
+.row-layout {
+    display: flex;
+}
+.reports-viewer-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.reveal-dash-board {
+    margin: 24px;
+    min-width: 400px;
+    min-height: 200px;
+    flex-grow: 1;
+    flex-basis: 0;
+    position: relative;
+}

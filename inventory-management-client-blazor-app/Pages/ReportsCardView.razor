@@ -1,0 +1,112 @@
+@page "/reports-card-view"
+@using InventoryReporting.Components
+@using RevealServer2
+@using Models.RevealServer2
+@using ECommerce
+@using Models.ECommerce
+@inject NavigationManager NavigationManager
+@inject IRevealServer2Service revealServer2Service
+@inject IECommerceService eCommerceService
+@inject IJSRuntime JSRuntime
+
+<div class="column-layout reports-card-view-container">
+    <div class="column-layout group">
+        <div class="row-layout group_1">
+            <h6 class="h6">
+                
+            </h6>
+            <div class="row-layout group_2">
+                <IgbButton Size="SizableComponentSize.Large" 
+                        @onclick="@(e => Navigate("new-report"))" 
+                        class="button button_3" reports-card-view-scope>
+                    <span class="material-icons">
+                        add
+                    </span>
+                    <span>New Dashboard</span>
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+            </div>
+        </div>
+        <div class="row-layout products">
+            @if (revealServer2FileData == null)
+            {
+                <p><em>Loading Dashboards...</em></p>
+            }
+            else
+            {
+                @foreach (var item in revealServer2FileData)
+                {
+                    <IgbCard  Outlined="true" class="card" reports-card-view-scope>
+                        <IgbCardMedia class="media-content" reports-card-view-scope>
+                            <DashboardThumbnail Info="@item.ThumbnailInfo"></DashboardThumbnail>
+                        </IgbCardMedia>
+                        <IgbCardHeader>
+                            <h3 slot="title">
+                                @item.Name
+                            </h3>
+                            <h5 slot="subtitle">
+                                @item.FakeOwner
+                            </h5>
+                        </IgbCardHeader>
+                        <IgbCardActions class="actions-content" reports-card-view-scope>
+                            <IgbButton Variant="ButtonVariant.Outlined" 
+                            slot="start" Size="SizableComponentSize.Large"
+                            @onclick="@(e => Navigate("reports-viewer/" + item.Name))"
+                            class="button_1" reports-card-view-scope>
+                                <span class="material-icons">
+                                    open_in_full
+                                </span>
+                                <span>Show</span>
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                            <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" reports-card-view-scope>
+                                <span class="material-icons">
+                                    remove_red_eye
+                                </span>
+                                <IgbRipple></IgbRipple>
+                            </IgbIconButton>
+                            <IgbIconButton slot="end" Variant="IconButtonVariant.Flat" class="icon-button" reports-card-view-scope>
+                                <span class="material-icons">
+                                    delete
+                                </span>
+                                <IgbRipple></IgbRipple>
+                            </IgbIconButton>
+                        </IgbCardActions>
+                    </IgbCard>
+                }
+            }
+        </div>
+    </div>
+
+</div>
+
+@code {
+    private Dashboard[] revealServer2FileData;
+
+    void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        revealServer2FileData = await revealServer2Service.GetDashboards(2);
+    }
+
+
+    // Assuming this is where your base64 string is stored
+
+    void SaveImage()
+    {
+        void SaveImage()
+        {
+            //var base64Image = @item.ThumbnailInfo; // Directly using the property
+            //var bytes = Convert.FromBase64String(base64Image.Split(',')[1]);
+            //var url = $"data:image/png;base64,{Convert.ToBase64String(bytes)}";
+            // JS call to trigger download (will need to implement in JS file)
+            //JSRuntime.InvokeVoidAsync("downloadFile", url, "image.png");
+        }
+    }
+
+
+}

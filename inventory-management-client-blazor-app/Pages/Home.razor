@@ -1,0 +1,190 @@
+@page "/"
+@using InventoryApp
+@using Models.InventoryApp
+@inject NavigationManager NavigationManager
+@inject IInventoryAppService inventoryAppService
+@inject IJSRuntime JSRuntime
+
+<div class="row-layout home-container">
+    <div class="column-layout group">
+        <div class="row-layout metrics">
+            <IgbCard Outlined="true" class="card" home-scope>
+                <IgbCardHeader>
+                    <h3 slot="title">
+                    </h3>
+                    <h5 slot="subtitle">
+                    </h5>
+                </IgbCardHeader>
+                <IgbCardContent class="body-content" home-scope>
+                    <div class="column-layout group_1">
+                        <img src="assets/Products.svg" class="image" />
+                        <p class="typography__subtitle-1 text">
+                            Products
+                        </p>
+                        <h4 class="h4">
+                            1,236
+                        </h4>
+                        <p class="typography__subtitle-2 text_1">
+                            Increased 75%
+                        </p>
+                    </div>
+                </IgbCardContent>
+                <IgbCardActions class="actions-content" home-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" slot="end" Size="SizableComponentSize.Large" @onclick="@(e => Navigate("reports-viewer"))" class="button" home-scope>
+                        View report
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </IgbCardActions>
+            </IgbCard>
+            <IgbCard Outlined="true" class="card" home-scope>
+                <IgbCardHeader>
+                    <h3 slot="title">
+                    </h3>
+                    <h5 slot="subtitle">
+                    </h5>
+                </IgbCardHeader>
+                <IgbCardContent class="body-content" home-scope>
+                    <div class="column-layout group_1">
+                        <img src="assets/Orders.svg" class="image" />
+                        <p class="typography__subtitle-1 text">
+                            Orders
+                        </p>
+                        <h4 class="h4">
+                            3,612
+                        </h4>
+                        <p class="typography__subtitle-2 text_1">
+                            Increased 75%
+                        </p>
+                    </div>
+                </IgbCardContent>
+                <IgbCardActions class="actions-content" home-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" slot="end" Size="SizableComponentSize.Large" @onclick="@(e => Navigate("reports-viewer"))" class="button" home-scope>
+                        View report
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </IgbCardActions>
+            </IgbCard>
+            <IgbCard Outlined="true" class="card" home-scope>
+                <IgbCardHeader>
+                    <h3 slot="title">
+                    </h3>
+                    <h5 slot="subtitle">
+                    </h5>
+                </IgbCardHeader>
+                <IgbCardContent class="body-content" home-scope>
+                    <div class="column-layout group_1">
+                        <img src="assets/Sales.svg" class="image" />
+                        <p class="typography__subtitle-1 text">
+                            Sales
+                        </p>
+                        <h4 class="h4">
+                            $35,000
+                        </h4>
+                        <p class="typography__subtitle-2 text_2">
+                            Decreased 15%
+                        </p>
+                    </div>
+                </IgbCardContent>
+                <IgbCardActions class="actions-content" home-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" slot="end" Size="SizableComponentSize.Large" @onclick="@(e => Navigate("reports-viewer"))" class="button" home-scope>
+                        View report
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </IgbCardActions>
+            </IgbCard>
+            <IgbCard Outlined="true" class="card" home-scope>
+                <IgbCardHeader>
+                    <h3 slot="title">
+                    </h3>
+                    <h5 slot="subtitle">
+                    </h5>
+                </IgbCardHeader>
+                <IgbCardContent class="body-content" home-scope>
+                    <div class="column-layout group_1">
+                        <img src="assets/Customers.svg" class="image" />
+                        <p class="typography__subtitle-1 text">
+                            Customers
+                        </p>
+                        <h4 class="h4">
+                            +10
+                        </h4>
+                        <p class="typography__subtitle-2 text_1">
+                            Increased 75%
+                        </p>
+                    </div>
+                </IgbCardContent>
+                <IgbCardActions class="actions-content" home-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" slot="end" Size="SizableComponentSize.Large" @onclick="@(e => Navigate("reports-viewer"))" class="button" home-scope>
+                        View report
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </IgbCardActions>
+            </IgbCard>
+        </div>
+        <div class="row-layout group_2">
+            <div class="column-layout new-products">
+                <div class="row-layout group_3">
+                    <p class="typography__subtitle-2 text_3">
+                        New Products
+                    </p>
+                </div>
+                <div class="column-layout group_4">
+                    <IgbList class="list" home-scope>
+                        @foreach (var item in inventoryAppNewProducts)
+                        {
+                            <IgbListItem>
+                                <IgbAvatar Src="@item.ImageURL" Size="SizableComponentSize.Medium" slot="start" class="avatar" home-scope></IgbAvatar>
+                                <div>
+                                    <div class="column-layout group_5">
+                                        <p class="typography__subtitle-2 text_4">
+                                            @item.Product
+                                        </p>
+                                        <div class="row-layout group_6">
+                                            <p class="typography__caption text_4">
+                                                @item.Category
+                                            </p>
+                                            <p class="typography__caption text_4">
+                                                |
+                                            </p>
+                                            <p class="typography__caption text_4">
+                                                @item.Code
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </IgbListItem>
+                        }
+                    </IgbList>
+                </div>
+            </div>
+            <div class="column-layout sales-by-category">
+                <p class="typography__body-1 text_4">
+                    <div id="revealView" style="height: calc(52vh - 0px); width: 100%; position:relative;" ></div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private NewProductsType[] inventoryAppNewProducts = new NewProductsType[] { };
+    void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        inventoryAppNewProducts = await inventoryAppService.GetNewProducts();
+
+        await base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("loadRevealView", "revealView", "Sector Analysis");
+        }
+    }
+}

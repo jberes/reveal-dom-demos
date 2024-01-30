@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script src="./assets/reveal/infragistics.reveal.js"></script>
+  <!--<script src="https://dl.revealbi.io/reveal/libs/1.5.0/infragistics.reveal.js"></script>-->
+  <script>
+    function setupReveal() {
+        console.log('setup');
+
+        $.ig.RevealSdkSettings.setBaseUrl('https://samples.revealbi.io/upmedia-backend/reveal-api/');
+        $.ig.RevealSdkSettings.theme = createCustomTheme();
+
+        $.ig.RevealSdkSettings.ensureFontsLoadedAsync().then(() => {
+          console.log('fonts loaded', $.ig.RevealSdkSettings.theme.regularFont);
+          
+          $.ig.RVDashboard.loadDashboardAsync('Marketing').then((dashboard) => {
+            let revealView = new $.ig.RevealView('#revealView');
+            revealView.dashboard = dashboard;
+            //revealView.updateRevealTheme();
+          });
+        });
+    }
+
+    function createCustomTheme() {
+        var theme = new $.ig.RevealTheme();
+
+        //const font = 'Bungee Spice';
+        const font = 'PT Sans';
+        theme.regularFont = font;
+        theme.mediumFont = font;
+        theme.boldFont = font;
+
+        return theme;
+    }
+
+    function loadFonts() {
+        document.fonts.load("16px 'Bungee Spice'").then((ev) => {
+          console.log("Fonts loaded:", ev);
+          setupReveal();
+        });
+    }
+
+    const fonts = document.createElement('link');
+    fonts.href = 'https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;500;600;700';
+    fonts.rel = 'stylesheet';
+    document.head.appendChild(fonts);
+    fonts.addEventListener('load', loadFonts);
+  </script>
+  <style>
+    #revealView {
+        height: 100vh;
+        width: 100vw;
+    }
+  </style>
+</head>
+<body style="font-family: 'Bungee Spice'">
+  <div id="revealView"></div>
+</body>
+</html>
