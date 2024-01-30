@@ -1,0 +1,13 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+  gap: 12px;
+}
+.text {
+  margin: 12px;
+  height: max-content;
+  min-width: min-content;
+}
