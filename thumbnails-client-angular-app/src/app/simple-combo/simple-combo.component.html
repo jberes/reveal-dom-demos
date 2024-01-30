@@ -1,0 +1,41 @@
+<div class="column-layout group">
+  <h5 class="h5">
+    Simple Combo Example
+  </h5>
+  <p class="text">
+    This sample demonstrates binding the dashboard name to a combo, then loading the selected dashboard into a RevealView.
+  </p>
+  
+  
+<!--   
+  <igx-simple-combo type="border" [data]="revealDomDashboardsFileData" [ngModel]="dashboardName!" 
+      valueKey="name" displayKey="name" (selectionChanging)="singleSelectComboSelectionChanging($event)" class="single-select-combo">
+    <label igxLabel>Dashboard Name</label>
+  </igx-simple-combo> -->
+
+
+  <igx-simple-combo [data]="revealDomDashboardsFileData"  [ngModel]="dashboardName!" 
+          valueKey="name" displayKey="name" >
+    <ng-template igxComboItem let-display let-key="valueKey">
+      <div >
+          <span class="region">{{ display.name }}</span>
+          <p></p>
+          <!-- <igx-card>
+            <igx-card-media height="35px" width="50px">
+              <app-dashboard-thumbnail [dashboardId]="display.name" />
+            </igx-card-media>
+          </igx-card> -->
+      </div>
+    </ng-template>
+</igx-simple-combo>
+
+
+
+
+
+
+
+  <p class="text_1">
+    dashboard here
+  </p>
+</div>

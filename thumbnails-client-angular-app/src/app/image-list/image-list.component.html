@@ -1,0 +1,30 @@
+<div class="column-layout group">
+  <h5 class="h5">
+    Image List Example
+  </h5>
+  <p class="text">
+    This sample demonstrates binding the dashboard name to a List control, then loading the selected dashboard into a RevealView.
+  </p>
+</div>
+<div class="row-layout group_1">
+  <div class="column-layout group_2">
+    <igx-list (click)="listClick()" class="list">
+      <igx-list-item [isHeader]="false" *ngFor="let item of revealDomDashboardsFileData" (click)="listItemClick(item)">
+        <span igxListThumbnail>
+        <igx-card elevated>
+          <igx-card-media height="75px" width="100px">
+            <app-dashboard-thumbnail [dashboardId]="item.name" />
+          </igx-card-media>
+        </igx-card>
+        </span>
+        <span igxListLineTitle>{{ item.name }}</span>
+        <span igxListLineSubTitle>{{ item.dateCreated }}</span>
+      </igx-list-item>
+    </igx-list>
+  </div>
+  <div class="column-layout group_3">
+    <p class="text_1">
+      dashboard here
+    </p>
+  </div>
+</div>
