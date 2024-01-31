@@ -127,7 +127,7 @@ export class View1Component implements OnInit, OnDestroy {
       return name === "Generated Dashboard" || name === "New Dashboard" || name === "";
     };
 
-    if (e.saveAs || isInvalidName(e.dashboardId) || isInvalidName(e.name)) {
+    if (e.saveAs || isInvalidName(e.name)) {
       let newName: string | null;
 
       do {
